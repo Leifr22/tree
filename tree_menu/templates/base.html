@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Мой сайт{% endblock %}</title>
+</head>
+<body>
+  <header>
+
+    {% load menu_tags %}
+    <nav class="main-nav">
+      {% draw_menu 'main_menu' %}
+    </nav>
+
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+
+    <nav class="footer-nav">
+      {% draw_menu 'footer_menu' %}
+    </nav>
+  </footer>
+</body>
+</html>

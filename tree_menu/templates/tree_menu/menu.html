@@ -1,0 +1,7 @@
+{# tree_menu/templates/tree_menu/menu.html #}
+<ul class="menu">
+  {% for node in tree %}
+    {% include 'tree_menu/menu_node.html' with node=node %}
+  {% endfor %}
+</ul>
+
