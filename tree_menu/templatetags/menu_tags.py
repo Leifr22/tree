@@ -33,7 +33,7 @@ def draw_menu(context, menu_name):
         if pid and pid in nodes:
             nodes[pid]['children'].append(node)
 
-    # Определим функцию для пометки активного и открытых узлов
+   
     def mark_active(node):
         itm = node['item']
         is_active = False
@@ -43,20 +43,20 @@ def draw_menu(context, menu_name):
         elif itm.get_url() == current_path:
             is_active = True
 
-        # Если текущий узел активен, отметим его
+        
         if is_active:
             node['active'] = True
             node['open'] = True
             return True
 
-        # Ищем в детях
+        
         for child in node['children']:
             if mark_active(child):
                 node['open'] = True
                 return True
         return False
 
-    # Соберём корневые узлы (parent=None)
+    
     tree = []
     for node in nodes.values():
         if node['item'].parent_id is None:
