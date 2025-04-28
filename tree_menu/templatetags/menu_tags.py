@@ -8,16 +8,16 @@ register = template.Library()
 def draw_menu(context, menu_name):
     request = context['request']
     current_path = request.path
-    # Попробуем получить имя текущего view
+    
     try:
         current_name = resolve(current_path).view_name
     except Resolver404:
         current_name = None
 
-    # Один запрос: все пункты меню
+    
     qs = MenuItem.objects.filter(menu=menu_name).select_related('parent')
 
-    # Подготовим словарь узлов
+    
     nodes = {}
     for item in qs:
         nodes[item.id] = {
@@ -27,7 +27,7 @@ def draw_menu(context, menu_name):
             'active': False,
         }
 
-    # Построим дерево родитель–дочерние
+    
     for node in nodes.values():
         pid = node['item'].parent_id
         if pid and pid in nodes:
